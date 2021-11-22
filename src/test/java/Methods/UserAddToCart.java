@@ -1,6 +1,9 @@
 package Methods;
 
+import net.bytebuddy.asm.Advice;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,17 +25,17 @@ public class UserAddToCart {
     @FindBy(xpath = "//select[@id='group_1']")
     private WebElement selectSize;
 
-    @FindBy(id = "quantity_wanted")
+    @FindBy(xpath = "//input[@id='quantity_wanted']")
     private WebElement qty;
-
-    @FindBy(id = "//i[@class='material-icons touchspin-up']")
-    private WebElement qty2;
 
     @FindBy(xpath = "//button[@class='btn btn-primary add-to-cart']")
     private WebElement addToCart;
 
-    @FindBy(xpath = "//a[@class='btn btn-primary']")
-    private WebElement checkout;
+    @FindBy(xpath = "//*[contains(text(), 'Proceed to checkout')]")
+    private WebElement firstCheckout;
+
+    @FindBy(xpath = "//*[contains(text(), 'Proceed to checkout')]")
+    private WebElement secondCheckout;
 
     public UserAddToCart(WebDriver driver){
         this.driver = driver;
@@ -40,22 +43,19 @@ public class UserAddToCart {
 
     }
 
-    public void addToCart(String size, int number){
+    public void addToCart(String size, String number){
         backToMainPage.click();
         chooseItem.click();
         Assert.assertEquals("SAVE 20%", discount.getText());
         Select dropdown = new Select(selectSize);
         dropdown.selectByVisibleText(size);
-//        qty.clear();
-//        qty.sendKeys(number);     //to nie działa
-
-        int i = 1;
-        while (i <= number){
-            qty2.click();
-            i++;                    //to też nie 
-        }
+        qty.clear();
+        qty.click();
+        qty.sendKeys(number);
+        qty.sendKeys(Keys.ENTER);
         addToCart.click();
-        checkout.click();
+        firstCheckout.click();
+        secondCheckout.click();
 
     }
 
