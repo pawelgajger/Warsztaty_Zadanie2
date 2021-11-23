@@ -40,7 +40,6 @@ public class UserAddToCart {
     public UserAddToCart(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
-
     }
 
     public void addToCart(String size, String number){
@@ -55,7 +54,6 @@ public class UserAddToCart {
         qty.sendKeys(Keys.ENTER);
         firstCheckout.click();
         secondCheckout.click();
-
     }
 
 }

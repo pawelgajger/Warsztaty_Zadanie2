@@ -1,12 +1,18 @@
+import Methods.TakeScreenshoot;
 import Methods.UserAddToCart;
 import Methods.UserLogin;
 import Methods.UserOrder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class SecondTest {
@@ -23,13 +29,15 @@ public class SecondTest {
     }
 
     @Test
-    public void testLoginWithProperCredentials() {
+    public void testLoginWithProperCredentials() throws IOException {
         UserLogin userLogin = new UserLogin(driver);
         userLogin.loginPage("jannowak@player.mailinator.com", "qwerty123!@#");
         UserAddToCart userAddToCart = new UserAddToCart(driver);
-        userAddToCart.addToCart("XL", "1");
+        userAddToCart.addToCart("XL", "5");
         UserOrder userOrder = new UserOrder(driver);
         userOrder.proceedOrder();
+        TakeScreenshoot takeScreenshoot = new TakeScreenshoot(driver);
+        takeScreenshoot.takeCaptureScreenshot();
     }
 
     @After
@@ -37,3 +45,4 @@ public class SecondTest {
         driver.quit();
     }
 }
+

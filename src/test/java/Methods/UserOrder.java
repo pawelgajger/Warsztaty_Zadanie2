@@ -32,10 +32,11 @@ public class UserOrder {
     @FindBy(css = "button[class='btn btn-primary center-block']")
     private WebElement orderButton;
 
-    public void captureScreenshot() throws IOException {
-        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileHandler.copy(src, new File("C:\\Kurs\\Warsztaty_Zadanie2\\screenshot.png"));
-    }
+    @FindBy(className = "account")
+    private WebElement account;
+
+    @FindBy(css = "a[id='history-link'] i[class='material-icons']")
+    private WebElement orders;
 
     public UserOrder(WebDriver driver){
         this.driver = driver;
@@ -49,5 +50,7 @@ public class UserOrder {
     choosePaymentOption.click();
     approveToConditions.click();
     orderButton.click();
+//    account.click();
+//    orders.click();
     }
 }
