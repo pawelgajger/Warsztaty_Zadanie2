@@ -25,7 +25,7 @@ public class UserAddToCart {
     @FindBy(xpath = "//select[@id='group_1']")
     private WebElement selectSize;
 
-    @FindBy(xpath = "//input[@id='quantity_wanted']")
+    @FindBy(name = "qty")
     private WebElement qty;
 
     @FindBy(xpath = "//button[@class='btn btn-primary add-to-cart']")
@@ -49,11 +49,10 @@ public class UserAddToCart {
         Assert.assertEquals("SAVE 20%", discount.getText());
         Select dropdown = new Select(selectSize);
         dropdown.selectByVisibleText(size);
-        qty.clear();
         qty.click();
+        qty.clear();
         qty.sendKeys(number);
         qty.sendKeys(Keys.ENTER);
-        addToCart.click();
         firstCheckout.click();
         secondCheckout.click();
 

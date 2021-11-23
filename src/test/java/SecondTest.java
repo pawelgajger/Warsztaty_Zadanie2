@@ -1,9 +1,7 @@
-import Methods.UserAddAddress;
 import Methods.UserAddToCart;
 import Methods.UserLogin;
 import Methods.UserOrder;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -29,16 +27,13 @@ public class SecondTest {
         UserLogin userLogin = new UserLogin(driver);
         userLogin.loginPage("jannowak@player.mailinator.com", "qwerty123!@#");
         UserAddToCart userAddToCart = new UserAddToCart(driver);
-        userAddToCart.addToCart("XL", "5");
-        UserAddAddress userAddAddress = new UserAddAddress(driver);
-        userAddAddress.addAddress("Korkowa 8", "00-111", "Warsaw", "501100100");
-        userAddAddress.selectCountry();
+        userAddToCart.addToCart("XL", "1");
         UserOrder userOrder = new UserOrder(driver);
         userOrder.proceedOrder();
     }
 
-//    @After
-//    public void tearDown() {
-//        driver.quit();
-//    }
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
 }

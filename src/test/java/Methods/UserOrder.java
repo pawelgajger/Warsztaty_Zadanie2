@@ -1,9 +1,15 @@
 package Methods;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.File;
+import java.io.IOException;
 
 public class UserOrder {
     private WebDriver driver;
@@ -25,6 +31,11 @@ public class UserOrder {
 
     @FindBy(css = "button[class='btn btn-primary center-block']")
     private WebElement orderButton;
+
+    public void captureScreenshot() throws IOException {
+        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileHandler.copy(src, new File("C:\\Kurs\\Warsztaty_Zadanie2\\screenshot.png"));
+    }
 
     public UserOrder(WebDriver driver){
         this.driver = driver;
