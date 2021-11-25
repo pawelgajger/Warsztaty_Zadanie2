@@ -32,11 +32,14 @@ public class UserOrder {
     @FindBy(css = "button[class='btn btn-primary center-block']")
     private WebElement orderButton;
 
-    @FindBy(className = "account")
-    private WebElement account;
-
-    @FindBy(css = "a[id='history-link'] i[class='material-icons']")
-    private WebElement orders;
+//    @FindBy(className = "account")
+//    private WebElement userAccount;
+//
+//    @FindBy(css = "a[id='history-link'] i[class='material-icons']")
+//    private WebElement userOrders;
+//
+//    @FindBy(css = "div[class='cart-summary-line cart-total'] span[class='value']")
+//    private WebElement totalPrice;
 
     public UserOrder(WebDriver driver){
         this.driver = driver;
@@ -44,13 +47,14 @@ public class UserOrder {
     }
 
     public void proceedOrder(){
+//    totalPrice.getText();
     confirmAddress.click();
     chooseDelivery.click();
     confirmDelivery.click();
     choosePaymentOption.click();
     approveToConditions.click();
     orderButton.click();
-//    account.click();
-//    orders.click();
+//    userAccount.click();
+//    userOrders.click();
     }
 }

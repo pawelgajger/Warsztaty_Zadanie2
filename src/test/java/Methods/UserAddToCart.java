@@ -39,12 +39,12 @@ public class UserAddToCart {
     @FindBy(xpath = "//*[contains(text(), 'Proceed to checkout')]")
     private WebElement secondCheckout;
 
-    public UserAddToCart(WebDriver driver){
+    public UserAddToCart(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void addToCart(String size, String number){
+    public void addToCart(String size, String number) {
         backToMainPage.click();
         chooseItem.click();
         Assert.assertEquals("SAVE 20%", discount.getText());
@@ -53,7 +53,7 @@ public class UserAddToCart {
         qty.click();
         qty.clear();
         qty.sendKeys(number);
-        WebDriverWait waitForElement = new WebDriverWait(driver,15);
+        WebDriverWait waitForElement = new WebDriverWait(driver, 15);
         waitForElement.until(ExpectedConditions.elementToBeClickable(addToCart));
         addToCart.click();
 //        qty.sendKeys(Keys.ENTER);
