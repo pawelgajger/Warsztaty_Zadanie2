@@ -38,11 +38,12 @@ public class SecondTest {
         userOrder.proceedOrder();
         TakeScreenshoot takeScreenshoot = new TakeScreenshoot(driver);
         takeScreenshoot.takeCaptureScreenshot();
+
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
+//    @After
+//    public void tearDown() {
+//        driver.quit();
+//    }
 }
 

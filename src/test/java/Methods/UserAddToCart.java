@@ -8,7 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UserAddToCart {
     private WebDriver driver;
@@ -51,7 +53,10 @@ public class UserAddToCart {
         qty.click();
         qty.clear();
         qty.sendKeys(number);
-        qty.sendKeys(Keys.ENTER);
+        WebDriverWait waitForElement = new WebDriverWait(driver,15);
+        waitForElement.until(ExpectedConditions.elementToBeClickable(addToCart));
+        addToCart.click();
+//        qty.sendKeys(Keys.ENTER);
         firstCheckout.click();
         secondCheckout.click();
     }
