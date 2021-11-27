@@ -52,7 +52,7 @@ public class UserAddToCart {
         dropdown.selectByVisibleText(size);
         qty.click();
         qty.clear();
-        qty.clear();
+//        qty.clear();
         qty.sendKeys(number);
         WebDriverWait waitForElement = new WebDriverWait(driver, 15);
         waitForElement.until(ExpectedConditions.elementToBeClickable(addToCart));
